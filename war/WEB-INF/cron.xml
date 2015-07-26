@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cronentries>
+	<cron>
+		<url>/cron/mycronjob</url>
+		<description>Update DB</description>
+    	<schedule>every 40 minutes</schedule>
+	</cron>
+	
+	<cron>
+		<url>/cron/cleanDatastore</url>
+		<description>Clean DB</description>
+    	<schedule>every 24 hours</schedule>
+	</cron>
+</cronentries>
