@@ -14,7 +14,7 @@ public class ValueComparator implements Comparator<String> {
 	}
 
 	public int compare(String a, String b) {
-		return (float)base.get(a).getHighCount() + (float)base.get(a).getLowCount()/3.
-				>= (float)base.get(b).getHighCount()+ (float)base.get(b).getLowCount()/3. ? -1 : 1;
+		return (float) base.get(a).getHighCount() + (float)base.get(a).getLowCount()/3.
+				>= (float) base.get(b).getHighCount()+ (float)base.get(b).getLowCount()/3. ? -1 : 1;
 	}
 }

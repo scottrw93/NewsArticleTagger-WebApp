@@ -20,8 +20,7 @@ public class CleanDatastoreServlet extends HttpServlet{
 
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		log.info("Cleaning Datastore");
-		
-		while(!delteOldEntries());//Avoid Timeout!
+		while(!delteOldEntries());
 	}
 
 	private boolean delteOldEntries() {
@@ -40,8 +39,7 @@ public class CleanDatastoreServlet extends HttpServlet{
 
 		int i = 0;
 		for(Entity entity : result.asIterable()){
-			if(1000 == i++)
-				return false;
+			if(1000 == i++) return false;
 			log.info("Deleting Entity...");
 			datastore.delete(entity.getKey());
 		}
