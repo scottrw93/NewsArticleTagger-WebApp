@@ -1,4 +1,4 @@
-package ucd.scott.fyp.map;
+package ucd.scott.fyp.utils;
 
 public class Map {
 	public static String convert(String feed){

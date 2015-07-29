@@ -15,31 +15,29 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	</servlet-mapping>
 	
 	<servlet>
-		<servlet-name>WebAppTagger</servlet-name>
-		<servlet-class>ucd.scott.fyp.WebAppTaggerServlet</servlet-class>
+		<servlet-name>ArticleViewServlet</servlet-name>
+		<servlet-class>ucd.scott.fyp.article.WebAppTaggerServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>WebAppTagger</servlet-name>
-		<url-pattern>/webapptagger</url-pattern>
+		<servlet-name>ArticleViewServlet</servlet-name>
+		<url-pattern>/articleview</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
-		<servlet-name>CronServlet</servlet-name>
-		<servlet-class>ucd.scott.fyp.CronServlet</servlet-class>
+		<servlet-name>DatastoreUpdaterServlet</servlet-name>
+		<servlet-class>ucd.scott.fyp.datastore.DatastoreUpdaterServlet</servlet-class>
 	</servlet>
-
 	<servlet-mapping>
-		<servlet-name>CronServlet</servlet-name>
+		<servlet-name>DatastoreUpdaterServlet</servlet-name>
 		<url-pattern>/cron/mycronjob</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
-		<servlet-name>CleanDatastoreServlet</servlet-name>
-		<servlet-class>ucd.scott.fyp.CleanDatastoreServlet</servlet-class>
+		<servlet-name>DatastoreCleanerServlet</servlet-name>
+		<servlet-class>ucd.scott.fyp.datastore.DatastoreCleanerServlet</servlet-class>
 	</servlet>
-
 	<servlet-mapping>
-		<servlet-name>CleanDatastoreServlet</servlet-name>
+		<servlet-name>DatastoreCleanerServlet</servlet-name>
 		<url-pattern>/cron/cleanDatastore</url-pattern>
 	</servlet-mapping>
 	
@@ -54,6 +52,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
     </auth-constraint>
 	</security-constraint>
  	-->
+ 	
 	<welcome-file-list>
 		<welcome-file>index</welcome-file>
 	</welcome-file-list>

@@ -1,4 +1,4 @@
-package ucd.scott.fyp;
+package ucd.scott.fyp.datastore;
 
 import java.io.IOException;
 import java.util.Calendar;
@@ -15,8 +15,8 @@ import com.google.appengine.api.datastore.Query.FilterPredicate;
 import com.google.appengine.api.datastore.Query.FilterOperator;
 
 @SuppressWarnings("serial")
-public class CleanDatastoreServlet extends HttpServlet{
-	private static final Logger log = Logger.getLogger(CronServlet.class.getName());
+public class DatastoreCleanerServlet extends HttpServlet{
+	private static final Logger log = Logger.getLogger(DatastoreUpdaterServlet.class.getName());
 
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		log.info("Cleaning Datastore");

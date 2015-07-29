@@ -1,4 +1,4 @@
-package ucd.scott.fyp;
+package ucd.scott.fyp.article;
 
 import java.io.IOException;
 import java.util.logging.Logger;
@@ -6,16 +6,11 @@ import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 
-import ucd.scott.fyp.article.ArticlesOverviewServlet;
-
-
-
-
 
 
 @SuppressWarnings("serial")
-public class WebAppTaggerServlet extends HttpServlet {
-	private static final Logger log = Logger.getLogger(WebAppTaggerServlet.class.getName());
+public class ArticleViewServlet extends HttpServlet {
+	private static final Logger log = Logger.getLogger(ArticleViewServlet.class.getName());
 
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException, ServletException {

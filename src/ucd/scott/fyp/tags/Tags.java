@@ -1,4 +1,4 @@
-package tag;
+package ucd.scott.fyp.tags;
 
 import java.util.ArrayList;
 import java.util.Iterator;

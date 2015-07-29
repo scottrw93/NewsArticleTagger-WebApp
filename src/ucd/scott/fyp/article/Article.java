@@ -2,7 +2,7 @@ package ucd.scott.fyp.article;
 
 import java.util.Date;
 
-import tag.Tags;
+import ucd.scott.fyp.tags.Tags;
 
 public class Article {
 	private String url;

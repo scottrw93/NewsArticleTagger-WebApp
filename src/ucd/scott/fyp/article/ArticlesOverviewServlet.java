@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
-import java.util.logging.Logger;
+//import java.util.logging.Logger;
 
 import com.google.appengine.api.datastore.*;
 import com.google.appengine.api.datastore.Query.Filter;
@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class ArticlesOverviewServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
-	private static final Logger log = Logger.getLogger(ArticlesOverviewServlet.class.getName());
+	//private static final Logger log = Logger.getLogger(ArticlesOverviewServlet.class.getName());
 
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		Articles articles = new Articles();
@@ -40,12 +40,10 @@ public class ArticlesOverviewServlet extends HttpServlet{
         		String key = KeyFactory.keyToString(result.getKey());
 				String headline = (String) result.getProperty("headline");
 				String summary = (String) result.getProperty("summary");
-				String tags = (String) result.getProperty("tags");
 				String url = (String) result.getProperty("url");
 				Date date = (Date) result.getProperty("date");
-				Integer numTags = tags.split("\'[HML]\'").length-1;
-				
-				Article article = new Article(id, key, url, headline, summary, "", null, feed, date, numTags, "");
+				Long numTags = (Long) result.getProperty("num_of_tags");
+				Article article = new Article(id, key, url, headline, summary, "", null, feed, date, numTags.intValue(), "");
 				articles.addArticle(id, article);
 				id++;
 			}
