@@ -1,7 +1,7 @@
 package ucd.scott.fyp.utils;
 
-public class Map {
-	public static String convert(String feed){
+public class MapUtils {
+	public static String convertFeedToTitle(String feed){
 		if(feed.equals("technologyNews")) return "Technology";
 		if(feed.equals("companyNews")) return "Company";
 		if(feed.equals("domesticNews")) return "USA";

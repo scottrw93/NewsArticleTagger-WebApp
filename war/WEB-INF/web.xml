@@ -16,7 +16,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	
 	<servlet>
 		<servlet-name>ArticleViewServlet</servlet-name>
-		<servlet-class>ucd.scott.fyp.article.WebAppTaggerServlet</servlet-class>
+		<servlet-class>ucd.scott.fyp.article.ArticleViewServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>ArticleViewServlet</servlet-name>

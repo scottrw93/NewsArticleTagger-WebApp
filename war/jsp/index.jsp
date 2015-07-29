@@ -1,24 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%@ page import="com.google.appengine.api.users.User" %>
-<%@ page import="com.google.appengine.api.users.UserService" %>
-<%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
-
-<%@ page import="com.google.appengine.api.datastore.KeyFactory" %>
 <%@ page import="java.util.List" %>
-
-<%@ page import="java.io.IOException" %>
-<%@ page import="java.text.DateFormat" %>
-<%@ page import="java.text.ParseException" %>
-<%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="java.util.Date" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.Locale" %>
-
 <%@ page import="java.util.ArrayList" %>
-
+<%@ page import="java.util.HashMap" %>
 <%@ page import="ucd.scott.fyp.article.*" %>
-
+<%@ page import="ucd.scott.fyp.utils.*" %>
 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
@@ -34,8 +20,7 @@
     <link href="css/bootstrap.css" rel="stylesheet" media="screen">
     <link href="css/sticky-footer-navbar.css" rel="stylesheet">
     <meta name="keywords" content="News, Tagging, NER">
-    <meta name="description"
-          content="Tagged News Streams">
+    <meta name="description" content="Tagged News Streams">
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -74,38 +59,38 @@
 
     <div class="col-md-10 col-md-offset-1">
         <div id="update_div">
-            <!-- For loop of each category -->
+            <%
+            HashMap<String, Articles> articles = (HashMap<String, Articles>) request.getAttribute("articles");
+
+            for(String key : articles.keySet()){
+            %>
                 <table class="table table-hover table-striped" style="margin-top: 40px;">
                     <thead>
                     <tr>
                         <th class="col-md-7" style="text-align: center; font-size:20px">
-
-                        	<a href="" style="color: black; font-size: 22px ; font-weight: bold"><%= "TESTING" %> Articles</a>
-
+                            <a href="" style="color: black; font-size: 22px ; font-weight: bold"><%= MapUtils.convertFeedToTitle(key) %> Articles</a>
                         </th>
                         <th class="col-md-1" style="text-align: center; font-size:20px">Tags</th>
-
                         <th class="col-md-3" style="text-align: center;font-size:20px">Time Published (UTC)</th>
                     </tr>
                     </thead>
                     <tbody>
                         <%
-                        Articles articles = (Articles) request.getAttribute("articles");
-
-                    	for(Article article : articles.articles()){
-                            request.setAttribute("obj", "test123");
+                    	for(Article article : articles.get(key).articles()){
                         %>
                         <tr>
-                            <td><a href="webapptagger?key=<%= article.getKey() %>"><%= article.getHeadline() %></a></td>
+                            <td><a href="articleview?key=<%= article.getKey() %>"><%= article.getHeadline() %></a></td>
                             <th class="col-md-1" style="text-align: center; font-size:20px"> <%= article.getNumTags() %> </th>
-                            <td style="text-align: center; vertical-align: middle"> <%= article.getDate().toString().replace(" GMT ", " ") %> </td>
+                            <td style="text-align: center; vertical-align: middle"> <%= article.getDateAsString() %> </td>
                         </tr>
                         <%
                         }
                         %>
                     </tbody>
                 </table>
-            <!-- End For Loop -->
+            <%
+            }
+            %>
         </div>
     </div>
 </div>

@@ -5,25 +5,25 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Articles {
-	private Map<Integer, Article> articles;
+	private Map<String, Article> articles;
 
 	public Articles(){
-		articles = new HashMap<Integer, Article>();
+		articles = new HashMap<String, Article>();
 	}
 
-	public void addArticle(int id, Article article) {
-		articles.put(id, article);
+	public void addArticle(String key, Article article) {
+		articles.put(key, article);
 	}
 
-	public Article getArticle(int id) throws Exception {
-		if(articles.containsKey(id)){
-			return articles.get(id);
+	public Article getArticle(String key) throws Exception {
+		if(articles.containsKey(key)){
+			return articles.get(key);
 		}
 		throw new Exception("Article not found!");
 	}
 	
-	public boolean constainsArticle(int id){
-		return articles.containsKey(id);
+	public boolean constainsArticle(String key){
+		return articles.containsKey(key);
 	}
 	
 	//TODO Change to iterator

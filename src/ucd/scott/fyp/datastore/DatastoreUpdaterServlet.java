@@ -55,14 +55,12 @@ public class DatastoreUpdaterServlet extends HttpServlet {
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		
 		for(Story article : articles){
-
 			String url = article.getUrl();
 			String headline = article.getHeadline();
 			String summary = article.getSummary();
 			Text text = new Text(article.getStoryText());
 			ArrayList<Tag> tags = article.getTags();
 			String feed = article.getFeed();
-			String image = article.getImage();
 
 			log.info("Headline: "+headline);
 
@@ -83,7 +81,6 @@ public class DatastoreUpdaterServlet extends HttpServlet {
 				entity.setProperty("summary", summary);
 				entity.setProperty("text", text);
 				entity.setProperty("feed", feed);
-				entity.setProperty("image", image);
 				entity.setProperty("date", date);
 				entity = addTagsToEntity(entity, tags);
 				datastore.put(entity);

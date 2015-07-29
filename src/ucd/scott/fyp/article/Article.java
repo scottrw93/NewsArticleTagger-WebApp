@@ -1,26 +1,25 @@
 package ucd.scott.fyp.article;
 
+import java.util.ArrayList;
 import java.util.Date;
 
-import ucd.scott.fyp.tags.Tags;
+import ucd.scott.fyp.tags.Tag;
 
 public class Article {
 	private String url;
 	private String headline;
 	private String summary;
 	private String text;
-	private Tags tags;
+	private ArrayList<Tag> tags;
 	private String feed;
 	private Date data;
 	private String source;
-	private final int id;
 	private int num_of_tags;
 	private String key;
 
-	public Article(final int id, String key, String url, String headline, String summary,
-			String text, Tags tags, String feed, Date date, int num_of_tags, String source){
+	public Article(String key, String url, String headline, String summary,
+			String text, ArrayList<Tag> tags, String feed, Date date, int num_of_tags, String source){
 		
-		this.id = id;
 		this.key = key;
 		this.url = url;
 		this.headline = headline;
@@ -33,10 +32,6 @@ public class Article {
 		this.num_of_tags = num_of_tags;
 	}
 
-	public int getId() {
-		return id;
-	}
-
 	public String getSource() {
 		return source;
 	}
@@ -47,6 +42,10 @@ public class Article {
 
 	public Date getDate() {
 		return data;
+	}
+	
+	public String getDateAsString() {
+		return data.toString().replace(" GMT ", " ");
 	}
 
 	public void setDate(Date data) {
@@ -61,11 +60,31 @@ public class Article {
 		this.feed = feed;
 	}
 
-	public Tags getTags() {
+	public ArrayList<Tag> getTags() {
 		return tags;
 	}
+	
+	public ArrayList<String> getHighRelTags() {
+		ArrayList<String> hrt = new ArrayList<String>();
+		for(Tag tag : tags){
+			if(tag.isHighRel()){
+				hrt.add(tag.getOrg());
+			}
+		}
+		return hrt;
+	}
+	
+	public ArrayList<String> getLowRelTags() {
+		ArrayList<String> lrt = new ArrayList<String>();
+		for(Tag tag : tags){
+			if(!tag.isHighRel()){
+				lrt.add(tag.getOrg());
+			}
+		}
+		return lrt;
+	}
 
-	public void setTags(Tags tags) {
+	public void setTags(ArrayList<Tag> tags) {
 		this.tags = tags;
 	}
 
