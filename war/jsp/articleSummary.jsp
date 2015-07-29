@@ -3,8 +3,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.HashMap" %>
-<%@ page import="ucd.scott.fyp.article.*" %>
-<%@ page import="ucd.scott.fyp.utils.*" %>
+<%@ page import="newstagger.webapp.article.*" %>
+<%@ page import="newstagger.webapp.utils.*" %>
 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
