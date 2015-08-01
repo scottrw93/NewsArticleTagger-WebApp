@@ -50,6 +50,7 @@
                 <ul class="nav navbar-nav">
                     <li><a></a></li>
                     <li><a href="index"> Latest Articles</a></li>
+                    <li><a href="orgfilter?org="> Filter by Organisation</a></li>
                 </ul>
             </div>
             <!--/.nav-collapse -->
@@ -87,7 +88,7 @@
 							<%
 							for(String tag : article.getHighRelTags()){
 							%>
-								<p style="margin-top: 15px;"><a href=""><span class="label label-default"><%= tag %></span></a></p>
+								<p style="margin-top: 15px;"><a href="orgfilter?org=<%= tag.replace("&" , "%26") %>"><span class="label label-default"><%= tag %></span></a></p>
                             <%
                             }
                             %>
@@ -97,7 +98,7 @@
 							<%
 							for(String tag : article.getLowRelTags()){
 							%>
-							    <p style="margin-top: 15px;"><a href=""><span class="label label-default"><%= tag %></span></a></p>
+							    <p style="margin-top: 15px;"><a href="orgfilter?org=<%= tag.replace("&" , "%26") %>"><span class="label label-default"><%= tag %></span></a></p>
                             <%
                             	}
                             %>

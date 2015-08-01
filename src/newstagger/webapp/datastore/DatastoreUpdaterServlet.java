@@ -82,7 +82,7 @@ public class DatastoreUpdaterServlet extends HttpServlet {
 				entity.setProperty("text", text);
 				entity.setProperty("feed", feed);
 				entity.setProperty("date", date);
-				entity = addTagsToEntity(entity, tags);
+				entity = addTagsToEntity(entity, tags, datastore);
 				datastore.put(entity);
 			} catch(Exception e){
 				log.warning("Failed to load article to db... ");
@@ -90,18 +90,24 @@ public class DatastoreUpdaterServlet extends HttpServlet {
 		}
 	}
 	
-	private Entity addTagsToEntity(Entity entity, List<Tag> tags) {
+	private Entity addTagsToEntity(Entity entity, List<Tag> tags, DatastoreService datastore) {
 		List<String> orgs = new ArrayList<String>();
 		List<String> rel = new ArrayList<String>();
 		
 		for(Tag tag : tags){
+			Entity company = new Entity("Company", ((String) entity.getProperty("headline"))+(tag.getCompany()));
+			company.setProperty("name", tag.getCompany());
+			company.setProperty("rel", tag.getRelevance());
+			company.setProperty("article", entity.getKey());
+			company.setProperty("date", entity.getProperty("date"));
+			datastore.put(company);
+			
 			orgs.add(tag.getCompany());
 			rel.add(tag.getRelevance());
 		}
 		entity.setProperty("tag_orgs", orgs);
 		entity.setProperty("tag_rel", rel);
 		entity.setProperty("num_of_tags", orgs.size());
-		
 		return entity;
 	}
 }
